@@ -16,6 +16,9 @@ import Dashboard from './pages/Dashboard';
 import PlanStep1 from './pages/PlanStep1';
 import PlanStep2 from './pages/PlanStep2';
 import PlanStep3 from './pages/PlanStep3';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import CookiePolicy from './pages/CookiePolicy';
 
 export default function App() {
   return (
@@ -39,6 +42,9 @@ export default function App() {
             <Route path="/plan"          element={<PlanStep1 />} />
             <Route path="/plan/compare"  element={<PlanStep2 />} />
             <Route path="/plan/summary"  element={<PlanStep3 />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
           </Routes>
         </main>
         <Footer />

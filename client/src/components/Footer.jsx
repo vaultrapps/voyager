@@ -150,9 +150,9 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-gray-500">
           <p>© {new Date().getFullYear()} Voyager, LLC · choosevoyager.com · All rights reserved.</p>
           <div className="flex gap-4">
-            <a href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-gray-300 transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-gray-300 transition-colors">Cookie Policy</a>
+            <Link to="/privacy-policy" className="hover:text-gray-300 transition-colors">Privacy Policy</Link>
+            <Link to="/terms-of-service" className="hover:text-gray-300 transition-colors">Terms of Service</Link>
+            <Link to="/cookie-policy" className="hover:text-gray-300 transition-colors">Cookie Policy</Link>
           </div>
         </div>
       </div>
