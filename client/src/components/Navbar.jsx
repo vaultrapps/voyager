@@ -68,7 +68,7 @@ export default function Navbar() {
           className="absolute left-1/2 -translate-x-1/2 text-xs tracking-widest font-medium pointer-events-none hidden lg:block"
           style={{ color: '#1D9E75' }}
         >
-          You think it, we plan it.
+          You think it, we plan it!
         </span>
 
         {/* Desktop auth */}

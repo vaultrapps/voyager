@@ -73,7 +73,7 @@ export default function Footer() {
               <span className="text-white text-lg font-bold">Voyager</span>
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed mb-5">
-              You think it, we plan it. Your all-in-one travel platform for flights, hotels, cruises, and life's biggest moves.
+              You think it, we plan it! Your all-in-one travel platform for flights, hotels, cruises, and life's biggest moves.
             </p>
             <div className="space-y-2 text-sm">
               <a href="mailto:hello@choosevoyager.com" className="flex items-center gap-2 hover:text-brand-400 transition-colors">
