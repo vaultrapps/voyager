@@ -180,6 +180,8 @@ function VendorCard({ vendor, isSelected, onSelect, actionLabel, affiliateUrl })
   );
 }
 
+const COMING_SOON_CATS = new Set(['flights', 'storage_pod', 'full_service']);
+
 /* ─── Category Section ─── */
 function CategorySection({ catId, vendors, isOpen, onToggle, selections, onSelect, filters, tripData }) {
   const meta = CAT_META[catId];
@@ -187,6 +189,7 @@ function CategorySection({ catId, vendors, isOpen, onToggle, selections, onSelec
   const Icon = meta.icon;
 
   const affiliateUrl = buildAffiliateUrl(catId, { ...filters, ...tripData });
+  const isComingSoon = COMING_SOON_CATS.has(catId);
 
   const filtered = vendors.filter(v => {
     if (filters.petFriendly === 'yes' && !v.petFriendly) return false;
@@ -210,13 +213,17 @@ function CategorySection({ catId, vendors, isOpen, onToggle, selections, onSelec
           <div>
             <h3 className="font-bold text-gray-900 text-sm">{meta.label}</h3>
             <p className="text-xs text-gray-400 mt-0.5">
-              {filtered.length} option{filtered.length !== 1 ? 's' : ''}
-              {selections[catId] ? ` · ${selections[catId].vendorName} selected` : ''}
+              {isComingSoon
+                ? 'Coming Soon'
+                : `${filtered.length} option${filtered.length !== 1 ? 's' : ''}${selections[catId] ? ` · ${selections[catId].vendorName} selected` : ''}`}
             </p>
           </div>
         </div>
         <div className="flex items-center gap-2 shrink-0">
-          {selections[catId] && (
+          {isComingSoon && (
+            <span className="badge badge-amber text-xs">Coming Soon</span>
+          )}
+          {!isComingSoon && selections[catId] && (
             <span className="badge badge-green text-xs">Selected</span>
           )}
           {isOpen ? <ChevronUp size={18} className="text-gray-400" /> : <ChevronDown size={18} className="text-gray-400" />}
@@ -225,7 +232,26 @@ function CategorySection({ catId, vendors, isOpen, onToggle, selections, onSelec
 
       {isOpen && (
         <div className="px-5 pb-5">
-          {filtered.length === 0 ? (
+          {isComingSoon ? (
+            <div className="py-4">
+              {affiliateUrl && (
+                <div className="mb-4">
+                  <a
+                    href={affiliateUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors"
+                  >
+                    {meta.actionLabel} <ExternalLink size={13} />
+                  </a>
+                </div>
+              )}
+              <div className="bg-gray-50 border border-gray-200 rounded-2xl px-6 py-8 text-center">
+                <p className="text-base font-bold text-gray-700 mb-2">We're building this feature!</p>
+                <p className="text-sm text-gray-500">In the meantime, use the Book Now links above to search directly.</p>
+              </div>
+            </div>
+          ) : filtered.length === 0 ? (
             <div className="text-center py-8 text-gray-400 text-sm">
               No options match your current filters. Try adjusting the filters above.
             </div>
