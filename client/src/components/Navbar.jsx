@@ -54,9 +54,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link to="/" className="flex items-center shrink-0">
-          <div className="bg-white rounded-xl px-2 py-1">
-            <img src="/Voyager_Logo.png" alt="Voyager" style={{ height: '40px' }} />
-          </div>
+          <img src="/Voyager_Logo.png" alt="Voyager" style={{ height: '56px' }} />
         </Link>
 
         {/* Motto — centered in the row */}
