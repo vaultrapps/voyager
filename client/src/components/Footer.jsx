@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Compass, Mail, Globe, Facebook, Twitter, Instagram, Youtube, Linkedin } from 'lucide-react';
+import { Mail, Globe, Facebook, Twitter, Instagram, Youtube, Linkedin } from 'lucide-react';
 
 const SERVICES = [
   { label: 'Flights',             path: '/flights' },
@@ -66,11 +66,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand column */}
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2.5 mb-4">
-              <div className="bg-brand-500 rounded-lg p-1.5">
-                <Compass className="h-5 w-5 text-white" />
-              </div>
-              <span className="text-white text-lg font-bold">Voyager</span>
+            <Link to="/" className="flex items-center mb-4">
+              <img src="/Voyager_Logo.png" alt="Voyager" style={{ height: '40px' }} />
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed mb-5">
               You think it, we plan it! Your all-in-one travel platform for flights, hotels, cruises, and life's biggest moves.

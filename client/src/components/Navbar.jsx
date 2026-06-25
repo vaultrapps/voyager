@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  Compass, Menu, X,
+  Menu, X,
   Plane, Building2, Home, Anchor, UtensilsCrossed,
   Truck, Shield, Globe, Star, User, Bell, Tag,
 } from 'lucide-react';
@@ -53,14 +53,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14 border-b border-white/10 relative">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 shrink-0">
-          <div className="bg-brand-500 rounded-lg p-1.5">
-            <Compass className="h-5 w-5 text-white" />
-          </div>
-          <div className="leading-none">
-            <span className="text-lg font-bold tracking-tight">Voyager</span>
-            <p className="text-[10px] text-brand-300 font-medium -mt-0.5 hidden sm:block">choosevoyager.com</p>
-          </div>
+        <Link to="/" className="flex items-center shrink-0">
+          <img src="/Voyager_Logo.png" alt="Voyager" style={{ height: '48px' }} />
         </Link>
 
         {/* Motto — centered in the row */}
