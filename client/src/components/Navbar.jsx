@@ -52,7 +52,7 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-11">
 
           {/* Desktop nav links */}
-          <div className="hidden lg:flex items-center flex-1 h-full">
+          <div className="hidden lg:flex items-center min-w-0 h-full">
             {PRIMARY_NAV.map(({ label, path, icon: Icon, highlight }) => (
               <Link
                 key={path}
@@ -94,7 +94,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop auth */}
-          <div className="hidden lg:flex items-center gap-2 ml-auto">
+          <div className="hidden lg:flex items-center gap-2 ml-auto shrink-0">
             <button className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors">
               <Bell size={17} />
             </button>
@@ -120,7 +120,7 @@ export default function Navbar() {
       {/* ── Row 2: centered logo ── */}
       <div className="bg-navy-900 flex flex-col items-center justify-center py-3 border-b border-white/10">
         <Link to="/" className="flex items-center">
-          <img src="/Voyager_Logo.png" alt="Voyager" style={{ height: '120px' }} />
+          <img src="/Voyager_Logo.png" alt="Voyager" style={{ height: '90px' }} />
         </Link>
         <span
           className="text-xs tracking-widest font-medium mt-1"
