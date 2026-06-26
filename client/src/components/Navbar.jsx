@@ -50,11 +50,11 @@ export default function Navbar() {
     <nav className={`bg-navy-900 text-white sticky top-0 z-50 transition-shadow duration-200 ${scrolled ? 'shadow-xl' : 'shadow-md'}`}>
 
       {/* ── Row 1: logo + motto + auth ── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-14 border-b border-white/10 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20 border-b border-white/10 relative">
 
         {/* Logo */}
         <Link to="/" className="flex items-center shrink-0">
-          <img src="/Voyager_Logo.png" alt="Voyager" style={{ height: '56px' }} />
+          <img src="/Voyager_Logo.png" alt="Voyager" style={{ height: '72px' }} />
         </Link>
 
         {/* Motto — centered in the row */}
