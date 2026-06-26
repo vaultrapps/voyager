@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import {
   Menu, X,
   Plane, Building2, Home, Anchor, UtensilsCrossed,
-  Truck, Shield, Globe, Star, User, Bell, Tag,
+  Truck, Shield, Globe, Star, User, Bell, Tag, Crown,
 } from 'lucide-react';
 
 const PRIMARY_NAV = [
@@ -12,7 +12,8 @@ const PRIMARY_NAV = [
   { label: 'Rentals',       path: '/rentals',     icon: Home },
   { label: 'Cruises',       path: '/cruises',     icon: Anchor },
   { label: 'Restaurants',   path: '/restaurants', icon: UtensilsCrossed },
-  { label: 'Travel Deals',  path: '/deals',       icon: Tag, highlight: true },
+  { label: 'Travel Deals',    path: '/deals',            icon: Tag,    highlight: true },
+  { label: 'Founding Member', path: '/founding-member',  icon: Crown,  founding: true },
 ];
 
 const SERVICE_NAV = [
@@ -53,20 +54,27 @@ export default function Navbar() {
 
           {/* Desktop nav links */}
           <div className="hidden lg:flex items-center h-full">
-            {PRIMARY_NAV.map(({ label, path, icon: Icon, highlight }) => (
+            {PRIMARY_NAV.map(({ label, path, icon: Icon, highlight, founding }) => (
               <Link
                 key={path}
                 to={path}
                 className={`flex items-center gap-1.5 px-3 h-full text-xs font-semibold transition-colors whitespace-nowrap ${
-                  isActive(path)
-                    ? 'bg-brand-500 text-white'
-                    : highlight
-                      ? 'text-amber-300 hover:text-white hover:bg-amber-500/20'
-                      : 'text-gray-300 hover:text-white hover:bg-white/10'
+                  isActive(path) && founding
+                    ? 'bg-amber-500 text-navy-900'
+                    : isActive(path)
+                      ? 'bg-brand-500 text-white'
+                      : founding
+                        ? 'text-amber-400 hover:text-navy-900 hover:bg-amber-400'
+                        : highlight
+                          ? 'text-amber-300 hover:text-white hover:bg-amber-500/20'
+                          : 'text-gray-300 hover:text-white hover:bg-white/10'
                 }`}
               >
                 <Icon size={13} />
                 {label}
+                {founding && !isActive(path) && (
+                  <span className="bg-amber-400 text-navy-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">NEW</span>
+                )}
                 {highlight && !isActive(path) && (
                   <span className="bg-amber-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">SALE</span>
                 )}
@@ -146,15 +154,20 @@ export default function Navbar() {
 
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider px-3 mb-1">Travel</p>
             <div className="space-y-0.5 mb-3">
-              {PRIMARY_NAV.map(({ label, path, icon: Icon, highlight }) => (
+              {PRIMARY_NAV.map(({ label, path, icon: Icon, highlight, founding }) => (
                 <Link
                   key={path}
                   to={path}
                   className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
-                    isActive(path) ? 'bg-brand-500 text-white' : highlight ? 'text-amber-300 hover:bg-amber-500/20 hover:text-amber-100' : 'text-gray-300 hover:text-white hover:bg-white/10'
+                    isActive(path) && founding ? 'bg-amber-500 text-navy-900'
+                    : isActive(path) ? 'bg-brand-500 text-white'
+                    : founding ? 'text-amber-400 hover:bg-amber-500/20 hover:text-amber-200'
+                    : highlight ? 'text-amber-300 hover:bg-amber-500/20 hover:text-amber-100'
+                    : 'text-gray-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   <Icon size={15} />{label}
+                  {founding && !isActive(path) && <span className="ml-auto bg-amber-400 text-navy-900 text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">NEW</span>}
                   {highlight && !isActive(path) && <span className="ml-auto bg-amber-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded-full leading-none">SALE</span>}
                 </Link>
               ))}

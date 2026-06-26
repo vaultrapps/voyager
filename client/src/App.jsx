@@ -19,6 +19,7 @@ import PlanStep3 from './pages/PlanStep3';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import CookiePolicy from './pages/CookiePolicy';
+import FoundingMember from './pages/FoundingMember';
 
 export default function App() {
   return (
@@ -44,7 +45,8 @@ export default function App() {
             <Route path="/plan/summary"  element={<PlanStep3 />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/cookie-policy"     element={<CookiePolicy />} />
+            <Route path="/founding-member"  element={<FoundingMember />} />
           </Routes>
         </main>
         <Footer />
