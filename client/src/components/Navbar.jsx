@@ -47,12 +47,12 @@ export default function Navbar() {
   return (
     <nav className={`bg-navy-900 text-white sticky top-0 z-50 transition-shadow duration-200 ${scrolled ? 'shadow-xl' : 'shadow-md'}`}>
 
-      {/* ── Row 1: nav links + auth (desktop) / mobile toggle ── */}
+      {/* ── Row 1: nav links only (desktop) / mobile toggle ── */}
       <div className="bg-navy-800 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-11">
 
           {/* Desktop nav links */}
-          <div className="hidden lg:flex items-center min-w-0 h-full">
+          <div className="hidden lg:flex items-center h-full">
             {PRIMARY_NAV.map(({ label, path, icon: Icon, highlight }) => (
               <Link
                 key={path}
@@ -93,19 +93,6 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Desktop auth */}
-          <div className="hidden lg:flex items-center gap-2 ml-auto shrink-0">
-            <button className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors">
-              <Bell size={17} />
-            </button>
-            <Link to="/dashboard" className="flex items-center gap-1.5 text-sm text-gray-300 hover:text-white px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors font-medium">
-              <User size={14} /> Sign In
-            </Link>
-            <Link to="/dashboard" className="bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors shadow-sm">
-              Sign Up Free
-            </Link>
-          </div>
-
           {/* Mobile toggle */}
           <button
             className="lg:hidden ml-auto p-2 text-gray-300 hover:text-white transition-colors"
@@ -117,17 +104,39 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* ── Row 2: centered logo ── */}
-      <div className="bg-navy-900 flex flex-col items-center justify-center py-3 border-b border-white/10">
-        <Link to="/" className="flex items-center">
-          <img src="/Voyager_Logo.png" alt="Voyager" style={{ height: '90px' }} />
-        </Link>
-        <span
-          className="text-xs tracking-widest font-medium mt-1"
-          style={{ color: '#1D9E75' }}
-        >
-          You think it, we plan it!
-        </span>
+      {/* ── Row 2: logo centered + auth right ── */}
+      <div className="bg-navy-900 border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-3 items-center py-3">
+
+          {/* Left spacer — balances auth column so logo stays centered */}
+          <div />
+
+          {/* Center: logo + motto */}
+          <div className="flex flex-col items-center">
+            <Link to="/" className="flex items-center">
+              <img src="/Voyager_Logo.png" alt="Voyager" style={{ height: '90px' }} />
+            </Link>
+            <span
+              className="text-xs tracking-widest font-medium mt-1"
+              style={{ color: '#1D9E75' }}
+            >
+              You think it, we plan it!
+            </span>
+          </div>
+
+          {/* Right: auth buttons */}
+          <div className="hidden lg:flex items-center gap-2 justify-end">
+            <button className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors">
+              <Bell size={17} />
+            </button>
+            <Link to="/dashboard" className="flex items-center gap-1.5 text-sm text-gray-300 hover:text-white px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors font-medium">
+              <User size={14} /> Sign In
+            </Link>
+            <Link to="/dashboard" className="bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors shadow-sm">
+              Sign Up Free
+            </Link>
+          </div>
+        </div>
       </div>
 
       {/* ── Mobile menu ── */}
