@@ -11,7 +11,7 @@ const PERKS = [
   {
     icon: Lock,
     title: 'Locked-In Pricing',
-    desc: 'Your founding member rate is frozen forever — no increases as we grow or launch new tiers.',
+    desc: 'Pay $7.99/mo for your first 2 years — 20% off the standard rate. After that, just $9.99/mo.',
   },
   {
     icon: Zap,
@@ -81,7 +81,7 @@ export default function FoundingMember() {
           </h1>
           <p className="text-gray-300 text-lg max-w-xl mx-auto mb-10">
             We're reserving {SPOTS_TOTAL} founding member spots for people who believe in
-            what we're building. Lock in your rate, shape the product, and travel smarter — forever.
+            what we're building. Lock in 20% off for your first 2 years, shape the product, and travel smarter.
           </p>
 
           {/* Spots counter */}
@@ -129,8 +129,8 @@ export default function FoundingMember() {
       {/* ── Pricing ── */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-black text-gray-900 mb-2">One Simple Founding Rate</h2>
-          <p className="text-gray-500 mb-10">Locked in for life — no surprise increases, ever.</p>
+          <h2 className="text-2xl font-black text-gray-900 mb-2">Your Founding Member Rate</h2>
+          <p className="text-gray-500 mb-10">20% off for your first 2 years — then $9.99/mo after.</p>
 
           <div className="max-w-sm mx-auto bg-white rounded-2xl shadow-xl border-2 border-amber-400 overflow-hidden">
             <div className="bg-amber-500 px-6 py-4 text-center">
@@ -140,14 +140,14 @@ export default function FoundingMember() {
             </div>
             <div className="px-8 py-8">
               <div className="flex items-end justify-center gap-1 mb-1">
-                <span className="text-5xl font-black text-gray-900">$4.99</span>
+                <span className="text-5xl font-black text-gray-900">$7.99</span>
                 <span className="text-gray-400 font-medium mb-2">/month</span>
               </div>
               <p className="text-gray-400 text-sm mb-1">
                 <span className="line-through">$9.99/mo</span>
-                <span className="ml-2 text-amber-600 font-bold">50% off, forever</span>
+                <span className="ml-2 text-amber-600 font-bold">20% off for 2 years</span>
               </p>
-              <p className="text-xs text-gray-400 mb-8">Billed monthly · Cancel anytime</p>
+              <p className="text-xs text-gray-400 mb-8">Then $9.99/mo · Billed monthly · Cancel anytime</p>
 
               <ul className="space-y-3 text-left mb-8">
                 {INCLUDED.map(item => (
@@ -202,8 +202,8 @@ export default function FoundingMember() {
           <Sparkles size={28} className="text-amber-400 mx-auto mb-3" />
           <h2 className="text-2xl font-black mb-2">Only <span className="text-amber-400">{spotsLeft} spots</span> remaining</h2>
           <p className="text-gray-400 text-sm mb-6">
-            Once all founding spots are claimed, this pricing disappears permanently.
-            Early believers deserve a permanent reward.
+            Once all founding spots are claimed, this rate disappears permanently.
+            Lock in 20% off for 2 years before the door closes.
           </p>
           {!submitted && (
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
