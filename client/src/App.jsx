@@ -20,6 +20,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import CookiePolicy from './pages/CookiePolicy';
 import FoundingMember from './pages/FoundingMember';
+import CookieBanner from './components/CookieBanner';
 
 export default function App() {
   return (
@@ -50,6 +51,7 @@ export default function App() {
           </Routes>
         </main>
         <Footer />
+        <CookieBanner />
       </div>
     </BrowserRouter>
   );
