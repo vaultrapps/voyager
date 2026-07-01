@@ -20,6 +20,7 @@ const TIERS = [
   {
     name: 'Standard',
     price: 'Free',
+    tier: null,
     color: 'border-gray-200',
     headerColor: 'bg-gray-50',
     features: ['Email support','48-hour response time','Basic itinerary help','Up to 3 booking changes'],
@@ -29,6 +30,7 @@ const TIERS = [
   {
     name: 'Premium',
     price: '$9.99/mo',
+    tier: 'premium',
     color: 'border-brand-300 ring-2 ring-brand-200',
     headerColor: 'bg-brand-500',
     headerText: 'text-white',
@@ -40,6 +42,7 @@ const TIERS = [
   {
     name: 'VIP',
     price: '$19.99/mo',
+    tier: 'vip',
     color: 'border-amber-300',
     headerColor: 'bg-amber-500',
     headerText: 'text-white',
@@ -68,6 +71,23 @@ export default function Concierge() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', request: '', dates: '', budget: '', tier: 'Premium' });
   const [submitted, setSubmitted] = useState(false);
   const [expandedFaq, setExpandedFaq] = useState(null);
+  const [checkoutError, setCheckoutError] = useState('');
+
+  async function handleCheckout(tier) {
+    setCheckoutError('');
+    try {
+      const res = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tier }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.url) throw new Error(data.error || 'Server error');
+      window.location.href = data.url;
+    } catch (err) {
+      setCheckoutError('Could not start checkout — please try again.');
+    }
+  }
   const [chatInput, setChatInput] = useState('');
   const [messages, setMessages] = useState([
     { from: 'agent', text: 'Hi! I\'m your Voyager concierge. How can I help you plan your perfect trip today? 🌍' },
@@ -136,6 +156,9 @@ export default function Concierge() {
         <div>
           <h2 className="text-2xl font-bold text-gray-900 text-center mb-1">Choose your level of service</h2>
           <p className="text-gray-500 text-sm text-center mb-8">All plans include access to the Voyager platform</p>
+          {checkoutError && (
+            <p className="text-red-500 text-sm text-center mb-4">{checkoutError}</p>
+          )}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {TIERS.map(tier => (
               <div key={tier.name} className={`card border-2 ${tier.color} overflow-visible`}>
@@ -155,7 +178,12 @@ export default function Concierge() {
                       </li>
                     ))}
                   </ul>
-                  <button className={`${tier.ctaStyle} w-full`}>{tier.cta}</button>
+                  <button
+                    className={`${tier.ctaStyle} w-full`}
+                    onClick={() => tier.tier && handleCheckout(tier.tier)}
+                  >
+                    {tier.cta}
+                  </button>
                 </div>
               </div>
             ))}

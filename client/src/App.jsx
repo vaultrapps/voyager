@@ -22,6 +22,8 @@ import CookiePolicy from './pages/CookiePolicy';
 import FoundingMember from './pages/FoundingMember';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import CheckoutSuccess from './pages/CheckoutSuccess';
+import CheckoutCancel from './pages/CheckoutCancel';
 import CookieBanner from './components/CookieBanner';
 
 export default function App() {
@@ -52,6 +54,8 @@ export default function App() {
             <Route path="/founding-member"  element={<FoundingMember />} />
             <Route path="/about"            element={<About />} />
             <Route path="/contact"          element={<Contact />} />
+            <Route path="/success"          element={<CheckoutSuccess />} />
+            <Route path="/cancel"           element={<CheckoutCancel />} />
           </Routes>
         </main>
         <Footer />
