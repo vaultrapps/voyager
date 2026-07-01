@@ -54,12 +54,24 @@ const INCLUDED = [
 export default function FoundingMember() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
   const spotsLeft = SPOTS_TOTAL - SPOTS_TAKEN;
   const pctFilled = Math.round((SPOTS_TAKEN / SPOTS_TOTAL) * 100);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    if (email.trim()) setSubmitted(true);
+    setError('');
+    try {
+      const res = await fetch('/api/founding-member', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+      if (!res.ok) throw new Error('Server error');
+      setSubmitted(true);
+    } catch {
+      setError('Something went wrong — please try again.');
+    }
   }
 
   return (
@@ -122,6 +134,7 @@ export default function FoundingMember() {
               </button>
             </form>
           )}
+          {error && <p className="text-red-400 text-xs mt-3">{error}</p>}
           <p className="text-gray-500 text-xs mt-4">No credit card required to reserve your spot.</p>
         </div>
       </section>

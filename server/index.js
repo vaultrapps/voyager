@@ -15,7 +15,8 @@ app.use('/api/restaurants',   require('./routes/restaurants'));
 app.use('/api/moving',        require('./routes/moving'));
 app.use('/api/military',      require('./routes/military'));
 app.use('/api/international', require('./routes/international'));
-app.use('/api/concierge',     require('./routes/concierge'));
+app.use('/api/concierge',        require('./routes/concierge'));
+app.use('/api/founding-member',  require('./routes/foundingMember'));
 
 app.get('/api/health', (_req, res) => res.json({ status: 'ok', service: 'Voyager API', version: '1.0.0' }));
 
