@@ -20,6 +20,8 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import CookiePolicy from './pages/CookiePolicy';
 import FoundingMember from './pages/FoundingMember';
+import About from './pages/About';
+import Contact from './pages/Contact';
 import CookieBanner from './components/CookieBanner';
 
 export default function App() {
@@ -48,6 +50,8 @@ export default function App() {
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/cookie-policy"     element={<CookiePolicy />} />
             <Route path="/founding-member"  element={<FoundingMember />} />
+            <Route path="/about"            element={<About />} />
+            <Route path="/contact"          element={<Contact />} />
           </Routes>
         </main>
         <Footer />

@@ -14,7 +14,7 @@ const SERVICES = [
 ];
 
 const COMPANY = [
-  { label: 'About Voyager',    path: '/' },
+  { label: 'About Voyager',    path: '/about' },
   { label: 'How It Works',     path: '/' },
   { label: 'Pricing',          path: '/' },
   { label: 'Partner With Us',  path: '/' },
@@ -24,7 +24,7 @@ const COMPANY = [
 
 const SUPPORT = [
   { label: 'Help Center',       path: '/' },
-  { label: 'Contact Us',        path: '/' },
+  { label: 'Contact Us',        path: '/contact' },
   { label: 'Travel Advisories', path: '/international' },
   { label: 'Refund Policy',     path: '/' },
   { label: 'Accessibility',     path: '/' },
